@@ -1,8 +1,15 @@
+import React from 'react';
 import styles from './SkillsStyles.module.css';
 import checkMarkIconDark from '../../assets/checkmark-dark.svg';
 import checkMarkIconLight from '../../assets/checkmark-light.svg';
 import SkillList from '../../common/SkillList';
 import { useTheme } from '../../common/ThemeContext';
+
+const skillCategories = [
+  ['HTML', 'CSS', 'JavaScript', 'Node.js'],
+  ['React.js', 'Next.js', 'Tailwind CSS'],
+  ['Redux', 'Git']
+];
 
 function Skills() {
   const { theme } = useTheme();
@@ -11,27 +18,16 @@ function Skills() {
   return (
     <section id="skills" className={styles.container}>
       <h1 className="sectionTitle">Skills</h1>
-      <div className={styles.skillList}>
-        <SkillList src={checkMarkIcon} skill="HTML" />
-        <SkillList src={checkMarkIcon} skill="CSS" />
-        <SkillList src={checkMarkIcon} skill="JavaScript" />
-        <SkillList src={checkMarkIcon} skill="Node.js" />
-      </div>
-      <hr />
-      <div className={styles.skillList}>
-        <SkillList src={checkMarkIcon} skill="React.js" />
-
-        <SkillList src={checkMarkIcon} skill="Next.js" /> 
-        <SkillList src={checkMarkIcon} skill="Tailwind CSS" />
-      </div>
-      <hr />
-      <div className={styles.skillList}>
-          <SkillList src={checkMarkIcon} skill="Redux" /> 
-{/*         <SkillList src={checkMarkIcon} skill="Webpack" /> */} */}
-        <SkillList src={checkMarkIcon} skill="Git" />
-{/*          <SkillList src={checkMarkIcon} skill="Jest" /> */
-{/*          <SkillList src={checkMarkIcon} skill="Tailwind" />  */} */}
-      </div>
+      {skillCategories.map((category, index) => (
+        <React.Fragment key={index}>
+          <div className={styles.skillList}>
+            {category.map(skill => (
+              <SkillList key={skill} src={checkMarkIcon} skill={skill} />
+            ))}
+          </div>
+          {index < skillCategories.length - 1 && <hr />}
+        </React.Fragment>
+      ))}
     </section>
   );
 }
