@@ -12,8 +12,8 @@ function Projects() {
       <div className={styles.projectsContainer}>
         <ProjectCard
           src={viberr}
-          link="https://github.com/Aayushkrishnaut/AayushYadavPortfolio"
-          h3="My Porfolio "
+          link="https://github.com/Aayushkrishnaut/car-website"
+          h3="EV landing page "
           // p="Streaming App"
         />
         <ProjectCard
